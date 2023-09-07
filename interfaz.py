@@ -32,7 +32,7 @@ t.color("darkgreen", "green")
 #turtle.title("Realizar triángulo")
 #t.bgcolor("lightblue")
 
-def hola():
+def crearTriangulo():
     
     '''
     t.fd(45)
@@ -43,9 +43,9 @@ def hola():
     t.lt(120)
     t.fd(22.5)
     t.circle(28.86751346)'''
-    a=90
-    b=150
-    c=120
+    a=200  
+    b=200
+    c=200
     if a + b > c and a + c > b and b + c > a:
         # Calcular los ángulos usando la ley de los cosenos
         A = math.degrees(math.acos((b**2 + c**2 - a**2) / (2 * b * c)))
@@ -92,7 +92,11 @@ def hola():
         t.pencolor("purple")
         t.penup()
         t.goto(Ix, Iy)
+
+################################ BISECTRIZ ################################
+        
         t.pendown()
+        t.pensize(3)
         t.goto(verticeUno)
         t.penup()
         t.goto(Ix, Iy)
@@ -102,8 +106,39 @@ def hola():
         t.goto(Ix, Iy)
         t.pendown()
         t.goto(verticeTres)
-        
+        t.pensize(2)
 
+################################ MEDIANA ################################
+        t.pencolor("green")
+        t.penup()
+        t.goto(verticeUno)
+        t.forward(c/2)
+        t.pendown()
+        t.goto(verticeTres)
+
+        t.penup()
+        t.left(180 - B)
+        t.goto(verticeDos)
+        t.forward(a/2)
+        t.pendown()
+        t.goto(verticeUno)
+
+        t.penup()
+        t.left(180 - C)
+        t.goto(verticeTres)
+        t.forward(b/2)
+        t.pendown()
+        t.goto(verticeDos)
+
+
+################################ MEDIANA ################################
+        t.penup()
+        t.pencolor("black")
+        t.goto(verticeTres)
+        t.pendown()
+        t.goto(verticeTres[0],verticeUno[1])
+
+        
 
 #Título
 frameTitulo=Frame(mainWindow,width=300,height=100)
@@ -119,7 +154,7 @@ titulo=Label(frameTitulo,text="No soy un círculo vicioso,\n soy un tríangulo a
 titulo.grid(pady=10)
 titulo.config(bg="#4da8cf",font=("arial",17,"bold"))
 
-cargarBD=Button(frame,text="Crear triángulo",command=hola)
+cargarBD=Button(frame,text="Crear triángulo",command=crearTriangulo)
 cargarBD.grid(row=3,column=1,pady=5)
 cargarBD.config(bg="#66bde6", width=44)
 '''
